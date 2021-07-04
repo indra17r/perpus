@@ -1,7 +1,7 @@
 <legend>Data Management</legend>
 
 <button class="btn btn-primary" type="button" onclick="window.open('<?php echo base_URL(); ?>apps/anggota/add/', '_self')">Data Baru</button>
-<button class="btn btn-primary" type="button" onclick="window.open('<?php echo base_URL(); ?>cetak/anggota', '_blank')">Cetak Kartu Anggota</button>
+<!--<button class="btn btn-primary" type="button" onclick="window.open('<?php echo base_URL(); ?>cetak/anggota', '_blank')">Cetak Kartu Anggota</button>-->
 <div class="pull-right">
 <form action="<?=base_URL()?>apps/anggota/cari" method="post">
 	<input type="text" name="q" style="width: 200px" placeholder="Masukkan kata kunci" required>

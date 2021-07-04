@@ -12,7 +12,10 @@ if ($mode == "edt" || $mode == "act_edt") {
 	$th_terbit	= $datpil->th_terbit;
 	$isbn		= $datpil->isbn;
 	$jml_hal	= $datpil->jml_hal;
+	$jml_judul	= $datpil->jml_judul;
+	$jml_eksp	= $datpil->jml_eksp;
 	$asal_perolehan	= $datpil->asal_perolehan;
+	$kota		= $datpil->kota;
 	$harga		= $datpil->harga;
 	$id_lokasi	= $datpil->id_lokasi;
 	$stat		= $datpil->stat;
@@ -28,7 +31,10 @@ if ($mode == "edt" || $mode == "act_edt") {
 	$th_terbit	= "";
 	$isbn		= "";
 	$jml_hal	= "";
+	$jml_judul	= "";
+	$jml_eksp	= "";
 	$asal_perolehan	= "";
+	$kota		= "";
 	$harga		= "";
 	$id_lokasi	= "";
 	$stat		= "";
@@ -47,9 +53,9 @@ if ($mode == "edt" || $mode == "act_edt") {
 	if (!empty($q_kelas)) {
 		foreach($q_kelas as $qk) {
 			if ($id_kelas == $qk->id) {
-				echo "<option value='".$qk->id."' selected>(".$qk->id.") ".$qk->nama."</option>";
+				echo "<option value='".$qk->id."' selected>(".$qk->kode.") ".$qk->nama."</option>";
 			} else {
-				echo "<option value='".$qk->id."'>(".$qk->id.") ".$qk->nama."</option>";
+				echo "<option value='".$qk->id."'>(".$qk->kode.") ".$qk->nama."</option>";
 			}
 		}
 	}
@@ -85,7 +91,13 @@ if ($mode == "edt" || $mode == "act_edt") {
 	<label style="width: 150px; float: left">Tahun Terbit</label><input class="span4" type="text" name="th_terbit" placeholder="Tahun Terbit" value="<?=$th_terbit?>" required><br>
 	<label style="width: 150px; float: left">I S B N</label><input class="span6" type="text" name="isbn" placeholder="I S B N" value="<?=$isbn?>" required><br>
 	<label style="width: 150px; float: left">Jumlah Halaman</label><input class="span3" type="text" name="jml_hal" placeholder="Jumlah Hal" value="<?=$jml_hal?>" required><br>
-	<label style="width: 150px; float: left">Asal Perolehan</label><input class="span6" type="text" name="asal_perolehan" placeholder="Asal Perolehan" value="<?=$asal_perolehan?>" required><br>
+	<label style="width: 150px; float: left">Jumlah Judul/Eksp.</label>
+	<input class="span1" type="text" name="jml_judul" placeholder="Judul" value="<?=$jml_judul?>" required>
+	<input class="span2" type="text" name="jml_eksp" placeholder="Eksemplar" value="<?=$jml_eksp?>" required><br>
+	<label style="width: 150px; float: left">Asal Perolehan</label>
+	<input type="radio" name="asal_perolehan" value="0" style="margin: 10px 0 10px" <?php echo !$asal_perolehan ? 'checked' : '' ?> id="hibah"><label for="hibah" style="display: inline">&nbsp;Hibah</label>
+        <input type="radio" name="asal_perolehan" value="1" style="margin: 10px 0 10px" <?php echo $asal_perolehan ? 'checked' : '' ?> id="beli"><label for="beli" style="display: inline">&nbsp;Pembelian</label><br>
+	<label style="width: 150px; float: left">Kota</label><input class="span6" type="text" name="kota" placeholder="Kota" value="<?=$kota?>" required><br>
 	<label style="width: 150px; float: left">Harga</label><input class="span4" type="text" name="harga" placeholder="Harga" value="<?=$harga?>" required><br>
 	<label style="width: 150px; float: left">Lokasi Buku</label>
 	<select name="id_lokasi"><option value="">[Pilih Lokasi]</option>
