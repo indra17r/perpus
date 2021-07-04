@@ -4,7 +4,8 @@
 	<input type="hidden" name="jml_buku" value="<?=$jml_buku?>">
 	
 	<div class="well">
-	<label style="width: 150px; float: left">ID Anggota</label><input class="span2" type="text" name="id_anggota" value="<?=$det_anggota->id?>"required readonly> &nbsp;<input class="span4" type="text" name="nama" value="<?=$det_anggota->nama?>" readonly><br>
+	<input type="hidden" name="id_anggota" value="<?=$det_anggota->id?>">
+	<label style="width: 150px; float: left">No Induk Anggota</label><input class="span2" type="text" name="induk" value="<?=$det_anggota->induk?>"required readonly> &nbsp;<input class="span4" type="text" name="nama" value="<?=$det_anggota->nama?>" readonly><br>
 	<label style="width: 150px; float: left">Tanggal Pinjam</label><input class="span2" type="text" name="tgl_pinjam" value="<?=date('Y-m-d')?>"readonly><br>
 	<label style="width: 150px; float: left">Tanggal Kembali</label><input class="span2" type="text" name="tgl_kembali" value="<?=adddate(7)?>" readonly><br>
 	<label style="width: 150px; float: left">Keterangan/Catatan</label><textarea class="span6" name="ket"></textarea><br>

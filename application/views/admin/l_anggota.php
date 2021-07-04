@@ -6,10 +6,10 @@
 	<table style="width: 100%; font-size: 10px"  class="table table-condensed">
 		<tr>
 			<th width="5%">No</th>
+			<th width="7%">No Induk</th>
 			<th width="20%">Nama</th>
 			<th width="30%">Alamat</th>
 			<th width="5%">JK</th>
-			<th width="7%">Agama</th>
 			<th width="15%">TTL</th>
 			<th width="10%">Status</th>
 			<th width="7%">Jenis</th>
@@ -23,10 +23,10 @@
 		?>
 		<tr>
 			<td style="text-align: center"><?=$no?></td>
+			<td style="text-align: left"><?=$d->induk?></td>
 			<td style="text-align: left"><?=$d->nama?></td>
 			<td style="text-align: left"><?=$d->alamat?></td>
 			<td style="text-align: center"><?=$d->jk?></td>
-			<td style="text-align: center"><?=$d->agama?></td>
 			<td style="text-align: left"><?=$d->tmp_lahir.", ".tgl_panjang($d->tgl_lahir, "sm")?></td>
 			<td style="text-align: center"><?=$d->jenis?></td>
 			<td style="text-align: center"><?=getAktif($d->stat)?></td>

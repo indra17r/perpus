@@ -15,7 +15,7 @@
 	<table width="100%"  class="table table-condensed">
 		<tr>
 			<th width="5%">No</th>
-			<th width="23%">[ID] Nama</th>
+			<th width="23%">[No Induk] Nama</th>
 			<th width="20%">T T L</th>
 			<th width="25%">Alamat</th>
 			<th width="20%">Jenis, Status</th>
@@ -38,7 +38,7 @@
 		?>
 		<tr>
 			<td style="text-align: center"><?=$i; ?></td>
-			<td>(<?=str_pad($b->id, 3, '0', STR_PAD_LEFT)?>) - <?=$b->nama?><br><b><?=$b->jk?></b></td>
+			<td>(<?=$b->induk?>) - <?=$b->nama?><br><b><?=$b->jk?></b></td>
 			<td><?=$b->tmp_lahir?>, <?=tgl_panjang($b->tgl_lahir, "sm")?></td>
 			<td><?=$b->alamat?></td>
 			<td><?=$b->jenis?>, <?php if ($b->stat == "1") { echo "Aktif"; } else { echo "Non Aktif"; }?>, <a href="<?=base_URL()?>apps/anggota/list_pinjam/<?=$b->id?>">Riwayat Pinjam</a></td>

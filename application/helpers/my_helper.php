@@ -89,6 +89,7 @@ function tgl_panjang($tgl, $tipe) {
 		else if ($bln == "10") { $bln_txt = "Oktober"; }  
 		else if ($bln == "11") { $bln_txt = "November"; }  
 		else if ($bln == "12") { $bln_txt = "Desember"; }  
+		else { $bln_txt = "(error)"; }  
 	} else if ($tipe == "sm") {
 		if ($bln == "01") { $bln_txt = "Jan"; }  
 		else if ($bln == "02") { $bln_txt = "Feb"; }  
@@ -102,6 +103,7 @@ function tgl_panjang($tgl, $tipe) {
 		else if ($bln == "10") { $bln_txt = "Okt"; }  
 		else if ($bln == "11") { $bln_txt = "Nov"; }  
 		else if ($bln == "12") { $bln_txt = "Des"; }  	
+		else { $bln_txt = "(error)"; }  	
 	}
 	return $tgl." ".$bln_txt." ".$thn;
 }

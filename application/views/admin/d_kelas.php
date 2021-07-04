@@ -14,7 +14,7 @@
 	<table width="100%"  class="table table-condensed">
 		<tr>
 			<th width="5%">No</th>
-			<th width="23%">ID</th>
+			<th width="23%">Kode</th>
 			<th width="65%">Nama</th>
 			<th width="7%">Control</th>
 		</tr>
@@ -29,7 +29,7 @@
 		?>
 		<tr>
 			<td style="text-align: center"><?=$i; ?></td>
-			<td style="text-align: center"><?=$b->id?></td>
+			<td style="text-align: center"><?=$b->kode?></td>
 			<td><?=$b->nama?></td>
 			
 			<td style="text-align: center">

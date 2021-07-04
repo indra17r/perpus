@@ -156,16 +156,17 @@ class Apps extends CI_Controller {
 
 		//ambil variabel Postingan
 		$idp					= addslashes($this->input->post('idp'));
+		$induk					= addslashes($this->input->post('induk'));
 		$nama					= addslashes($this->input->post('nama'));
 		$alamat					= addslashes($this->input->post('alamat'));
 		$jk						= addslashes($this->input->post('jk'));
-		$agama					= addslashes($this->input->post('agama'));
 		$tmp_lahir				= addslashes($this->input->post('tmp_lahir'));
 		
 		$tgl_lahir				= $this->input->post('th')."-".str_pad($this->input->post('bl'), 2, '0', STR_PAD_LEFT)."-".str_pad($this->input->post('tg'), 2, '0', STR_PAD_LEFT);
 		
 		$jenis					= addslashes($this->input->post('jenis'));
 		$status					= addslashes($this->input->post('status'));
+		$telp					= addslashes($this->input->post('telp'));
 		
 		$cari					= addslashes($this->input->post('q'));
 		//view tampilan website\
@@ -186,12 +187,12 @@ class Apps extends CI_Controller {
 			$a['datpil']		= $this->db->query("SELECT * FROM t_anggota WHERE id = '$idu'")->row();	
 			$a['page']			= "f_anggota";
 		}else if ($mau_ke == "act_add") {
-			$this->db->query("INSERT INTO t_anggota VALUES ('', '$nama', '$alamat', '$jk', '$agama', '$tmp_lahir', '$tgl_lahir', '',  NOW(), '$jenis', '1')");
+			$this->db->query("INSERT INTO t_anggota VALUES ('', '$induk', '$nama', '$alamat', '$jk', '$tmp_lahir', '$tgl_lahir', '',  NOW(), '$jenis', '1', '$telp')");
 			
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been added</div>");
 			redirect('apps/anggota');
 		} else if ($mau_ke == "act_edt") {
-			$this->db->query("UPDATE t_anggota SET nama = '$nama', alamat = '$alamat', jk = '$jk', agama = '$agama', tmp_lahir = '$tmp_lahir', tgl_lahir = '$tgl_lahir', jenis = '$jenis', stat = '$status' WHERE id = '$idp'");
+			$this->db->query("UPDATE t_anggota SET induk = '$induk', nama = '$nama', alamat = '$alamat', jk = '$jk', tmp_lahir = '$tmp_lahir', tgl_lahir = '$tgl_lahir', jenis = '$jenis', stat = '$status', telp = '$telp' WHERE id = '$idp'");
 
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been updated</div>");			
 			redirect('apps/anggota');
@@ -276,7 +277,7 @@ class Apps extends CI_Controller {
 		} else if ($mau_ke == "act_add") {
 			//$sama  = "";
 			for ($i = 1; $i <= $jml_buku; $i++) {
-				$this->db->query("INSERT INTO t_trans VALUES ('', '".$this->input->post('id_buku_'.$i)."', '$id_anggota', '$tgl_pinjam', '$tgl_kembali', 'P', '$ket', '0', '0')");
+				$this->db->query("INSERT INTO t_trans VALUES (null, '".$this->input->post('id_buku_'.$i)."', '$id_anggota', '$tgl_pinjam', '$tgl_kembali', 'P', '$ket', '0', '0')");
 				$this->db->query("UPDATE t_buku SET stat_pinjam = 'P' WHERE id = '".$this->input->post('id_buku_'.$i)."'");
 			}
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been added</div>");
@@ -307,6 +308,40 @@ class Apps extends CI_Controller {
 								<td>'.$d->id.'</td>
 								<td>'.$d->judul.'</td>
 								<td><a href="#" class="btn btn-success btn-sm" onclick="return isikan_kode('.$id_data.', '.$d->id.', \''.addslashes($d->judul).'\');">OK</a></td>
+							</tr>';
+				}
+				echo '	</tbody></table>';
+			} else {
+				echo '<div class="alert alert-error">Tidak ditemukan</a>';
+			}
+			exit;
+		} else if ($mau_ke == "carianggota") {
+			$kata_kunci			=  empty($_POST['kata_kunci']) ? $_GET['kata_kunci'] : $_POST['kata_kunci'];
+		
+			$q_data				=  $this->db->query("SELECT id, induk, nama FROM t_anggota WHERE induk LIKE '%$kata_kunci%' OR nama LIKE '%$kata_kunci%' ORDER BY id ASC");
+			$data				=  $q_data->result();
+			$jumlah_hasil		=  $q_data->num_rows();
+			
+			if (strlen($kata_kunci) < 4) {
+				echo '<div class="alert alert-error">Kata kunci minimal 3 huruf</a>';
+			} else if (!empty($data)) {
+				echo ' 	<div class="alert alert-info">Ditemukan <b>'.$jumlah_hasil.'</b> data</div>';
+				echo '	<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th class="hidden">ID</th>
+									<th width="20%">No Induk</th>
+									<th width="70%">Nama</th>
+									<th width="10%">Pilih</th>
+								</tr>
+							</thead>
+							<tbody>';
+				foreach ($data as $d) {
+					echo '	<tr>
+								<td class="hidden">'.$d->id.'</td>
+								<td>'.$d->induk.'</td>
+								<td>'.$d->nama.'</td>
+								<td><a href="#" class="btn btn-success btn-sm" onclick="return isikan_kode('.$d->id.', '.$d->induk.', \''.addslashes($d->nama).'\');">OK</a></td>
 							</tr>';
 				}
 				echo '	</tbody></table>';
@@ -580,7 +615,7 @@ class Apps extends CI_Controller {
 
 		//ambil variabel Postingan
 		$idp					= addslashes($this->input->post('idp'));
-		$idp2					= addslashes($this->input->post('idp2'));
+		$kode					= addslashes($this->input->post('kode'));
 		$nama					= addslashes($this->input->post('nama'));
 		
 		$cari					= addslashes($this->input->post('q'));
@@ -594,7 +629,7 @@ class Apps extends CI_Controller {
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been deleted </div>");
 			redirect('apps/r_kelas');
 		} else if ($mau_ke == "cari") {
-			$a['data']		= $this->db->query("SELECT * FROM r_kelas WHERE nama LIKE '%$cari%' ORDER BY id DESC")->result();
+			$a['data']		= $this->db->query("SELECT * FROM r_kelas WHERE kode LIKE '%$kode%' OR nama LIKE '%$nama%' ORDER BY id DESC")->result();
 			$a['page']	= "d_kelas";
 		} else if ($mau_ke == "add") {
 			$a['page']	= "f_kelas";
@@ -602,12 +637,12 @@ class Apps extends CI_Controller {
 			$a['datpil']		= $this->db->query("SELECT * FROM r_kelas WHERE id = '$idu'")->row();	
 			$a['page']			= "f_kelas";
 		}else if ($mau_ke == "act_add") {
-			$cek_id	= $this->db->query("SELECT * FROM r_kelas WHERE id = '$idp2'")->num_rows();
+			$cek_id	= $this->db->query("SELECT * FROM r_kelas WHERE kode = '$kode'")->num_rows();
 			if ($cek_id > 0) {
-				$this->session->set_flashdata("k", "<div class=\"alert alert-error\">ID $idp2 sudah dipakai</div>");
+				$this->session->set_flashdata("k", "<div class=\"alert alert-error\">ID $kode sudah dipakai</div>");
 				redirect('apps/r_kelas/add');
 			} else {			
-				$this->db->query("INSERT INTO r_kelas VALUES ('$idp2', '$nama')");
+				$this->db->query("INSERT INTO r_kelas VALUES (null, '$kode', '$nama')");
 				$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been added</div>");
 				redirect('apps/r_kelas');
 			}
