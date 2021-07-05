@@ -80,12 +80,6 @@ if ($mode == "edt" || $mode == "act_edt") {
 	<br>
 	
 	<label style="width: 150px; float: left">Judul Buku</label><input class="span8" type="text" name="judul" placeholder="Judul" value="<?=$judul?>" required><br>
-	<?php 
-	if ($mode == "add") {
-	?>
-	<label style="width: 150px; float: left">Jumlah Buku Sama</label><input class="span6" type="text" name="buku_sama" placeholder="Jumlah buku dengan judul, pengarang, penerbit, dan spesifikasi sama" required><br>
-	<?php } ?>
-	
 	<label style="width: 150px; float: left">Pengarang</label><input class="span8" type="text" name="pengarang" placeholder="Pengarang" value="<?=$pengarang?>" required><br>
 	<label style="width: 150px; float: left">Penerbit</label><input class="span8" type="text" name="penerbit" placeholder="Penerbit" value="<?=$penerbit?>" required><br>
 	<label style="width: 150px; float: left">Tahun Terbit</label><input class="span4" type="text" name="th_terbit" placeholder="Tahun Terbit" value="<?=$th_terbit?>" required><br>

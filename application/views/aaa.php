@@ -106,7 +106,7 @@
 		<hr>	
 
      <footer>
-		<div><center>&reg; SIMPUS. Loaded in : 0.1462. Copyright: <?=$q_instansi->nama?> - 2013.</div>
+		<div><center>&copy; Sistem Informasi Perpustakaan <?=$q_instansi->nama?> - <?=date('Y')?>.</div>
 	</footer>
 
 

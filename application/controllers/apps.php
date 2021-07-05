@@ -70,7 +70,10 @@ class Apps extends CI_Controller {
 		$th_terbit				= addslashes($this->input->post('th_terbit'));
 		$isbn					= addslashes($this->input->post('isbn'));
 		$jml_hal				= addslashes($this->input->post('jml_hal'));
+		$jml_judul				= addslashes($this->input->post('jml_judul'));
+		$jml_eksp				= addslashes($this->input->post('jml_eksp'));
 		$asal_perolehan			= addslashes($this->input->post('asal_perolehan'));
+		$kota					= addslashes($this->input->post('kota'));
 		$harga					= addslashes($this->input->post('harga'));
 		$id_lokasi				= addslashes($this->input->post('id_lokasi'));
 		$stat					= addslashes($this->input->post('stat'));
@@ -95,12 +98,15 @@ class Apps extends CI_Controller {
 			$a['datpil']		= $this->db->query("SELECT * FROM t_buku WHERE id = '$idu'")->row();	
 			$a['page']			= "f_buku";
 		}else if ($mau_ke == "act_add") {
-			$this->db->query("INSERT INTO t_buku VALUES ('', '$id_kelas', '$id_jenis', '$judul', '$pengarang', '$penerbit', '$th_terbit', '$isbn', '$jml_hal', '$asal_perolehan', '$harga', '$id_lokasi', '$stat', 'R', '$deskripsi', NOW())");
+			$q_induk = $this->db->query("SELECT induk_2 FROM t_buku ORDER BY induk_2 DESC LIMIT 1")->row();
+			$induk_1 = str_pad($q_induk->induk_2+1, 4, '0', STR_PAD_LEFT);
+			$induk_2 = str_pad($induk_1+$jml_eksp-1, 4, '0', STR_PAD_LEFT);
+			$this->db->query("INSERT INTO t_buku VALUES (NULL, '$id_kelas', '$id_jenis', '$induk_1', '$induk_2', '$judul', '$pengarang', '$penerbit', '$th_terbit', '$isbn', '$jml_hal', '$jml_judul', '$jml_eksp', '$asal_perolehan', '$kota', '$harga', '$id_lokasi', '$stat', 'R', '$deskripsi', NOW())");
 			
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been added</div>");
 			redirect('apps/buku');
 		} else if ($mau_ke == "act_edt") {
-			$this->db->query("UPDATE t_buku SET id_kelas = '$id_kelas', id_jenis = '$id_jenis', judul = '$judul', pengarang = '$pengarang', penerbit = '$penerbit', th_terbit = '$th_terbit', isbn = '$isbn', jml_hal = '$jml_hal', asal_perolehan = '$asal_perolehan', harga = '$harga', id_lokasi = '$id_lokasi', stat = '$stat', deskripsi = '$deskripsi'  WHERE id = '$idp'");
+			$this->db->query("UPDATE t_buku SET id_kelas = '$id_kelas', id_jenis = '$id_jenis', judul = '$judul', pengarang = '$pengarang', penerbit = '$penerbit', th_terbit = '$th_terbit', isbn = '$isbn', jml_hal = '$jml_hal', jml_judul = '$jml_judul', jml_eksp = '$jml_eksp', asal_perolehan = '$asal_perolehan', kota = '$kota', harga = '$harga', id_lokasi = '$id_lokasi', stat = '$stat', deskripsi = '$deskripsi'  WHERE id = '$idp'");
 
 			$this->session->set_flashdata("k", "<div class=\"alert alert-success\">Data has been updated</div>");			
 			redirect('apps/buku');
