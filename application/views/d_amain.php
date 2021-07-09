@@ -17,8 +17,9 @@
 		<option value="P">Perempuan</option>
 		</select><br>		
 		<label style="width: 150px; float: left">Jenis Anggota</label><select name="jenis" required><option value="">[Pilih Jenis Anggota]</option>
-		<option value="Mahasiswa">Mahasiswa</option>
-		<option value="Dosen">Dosen</option>
+		<option value="Siswa">Siswa</option>
+		<option value="Guru">Guru</option>
+		<option value="Lainnya">Lainnya</option>
 		</select><br>
 		<label style="width: 150px; float: left">Keperluan</label>
 		</label><label><input type="checkbox" name="perlu1" value="Baca Buku" required> Baca Buku</label>

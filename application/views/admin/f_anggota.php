@@ -46,7 +46,7 @@ if ($mode == "edt" || $mode == "act_edt") {
 	<select name="jk"><option value="">[Jns Kel]</option>
 	<?php 
 	$jk_p		= array("L", "P");
-	$jenis_p	= array("Siswa", "Guru");
+	$jenis_p	= array("Siswa", "Guru", "Karyawan", "Lainnya");
 	
 	for($a = 0; $a < sizeof($jk_p); $a++) {
 		if ($jk == $jk_p[$a]) {

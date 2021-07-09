@@ -14,10 +14,13 @@
 	<table width="100%"  class="table table-condensed">
 		<tr>
 			<th width="5%">No</th>
-			<th width="35%">Judul, Pengarang, Penerbit</th>
+			<th width="10%">No Induk</th>
+			<th width="8%">Klasifikasi</th>
+			<th width="30%">Judul, Pengarang, Penerbit</th>
 			<th width="8%">Th. Terbit<br>Jml. Hal</th>
-			<th width="15%">Lokasi</th>
-			<th width="30%">Deskripsi</th>
+			<th width="5%">Jumlah<br>Judul/Eksp.</th>
+			<th width="10%">Lokasi</th>
+			<th width="17%">Deskripsi</th>
 			<th width="7%">Control</th>
 		</tr>
 		
@@ -36,8 +39,11 @@
 		?>
 		<tr>
 			<td style="text-align: center"><?=$i; ?></td>
+			<td style="text-align: center"><?=$b->induk_1;?>-<?=$b->induk_2;?>/SDM</td>
+			<td style="text-align: center"><?=$b->kelas_kode;?>/<?=substr(strtoupper($b->pengarang), 0, 3);?>/M</td>
 			<td><?=$b->judul?><br><b><?=$b->pengarang?></b><br><i><?=$b->penerbit?></i></td>
 			<td><?=$b->th_terbit?><br><?=$b->jml_hal?> hlmn</td>
+			<td style="text-align: center"><?=$b->jml_judul?>/<?=$b->jml_eksp?></td>
 			<td style="text-align: center"><?=getLokasi($b->id_lokasi)?></td>
 			<td><?=$b->deskripsi?></td>
 			

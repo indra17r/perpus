@@ -12,14 +12,16 @@
 	<table style="width: 100%; font-size: 10px; border-collapse: collapse" border="1" class="table table-condensed">
 		<tr>
 			<th width="5%">No</th>
-			<th width="5%">Kelas</th>
+			<th width="8%">No Induk</th>
+			<th width="5%">Klasifikasi</th>
 			<th width="30%">Judul</th>
-			<th width="20%">Pengarang</th>
+			<th width="10%">Pengarang</th>
 			<th width="10%">Penerbit</th>
 			<th width="5%">Tahun Terbit</th>
 			<th width="5%">Jumlah Hal</th>
+			<th width="5%">Jml Judul/Eksp.</th>
 			<th width="10%">ISBN</th>
-			<th width="10%">Lokasi</th>
+			<th width="7%">Lokasi</th>
 			
 		</tr>
 		<?php 
@@ -31,12 +33,14 @@
 		?>
 		<tr>
 			<td style="text-align: center"><?=$no?></td>
-			<td style="text-align: center"><?=$d->id_kelas?></td>
+			<td style="text-align: center"><?=$d->induk_1;?>-<?=$d->induk_2;?>/SDM</td>
+			<td style="text-align: center"><?=$d->kelas_kode?>/<?=substr(strtoupper($d->pengarang), 0, 3);?>/M</td>
 			<td style="text-align: left"><?=$d->judul?></td>
 			<td style="text-align: left"><?=$d->pengarang?></td>
 			<td style="text-align: center"><?=$d->penerbit?></td>
 			<td style="text-align: center"><?=$d->th_terbit?></td>
 			<td style="text-align: center"><?=$d->jml_hal?></td>
+			<td style="text-align: center"><?=$d->jml_judul?>/<?=$d->jml_eksp?></td>
 			<td style="text-align: center"><?=$d->isbn?></td>
 			<td style="text-align: center"><?=getLokasi($d->id_lokasi)?></td>
 			

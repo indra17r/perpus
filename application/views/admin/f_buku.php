@@ -46,8 +46,8 @@ if ($mode == "edt" || $mode == "act_edt") {
 
 	<fieldset><legend>Form</legend>
 	<?php echo $this->session->flashdata("k");?>
-	<label style="width: 150px; float: left">Kelas</label>
-	<select name="id_kelas"><option value="">[Pilih Kelas]</option>
+	<label style="width: 150px; float: left">Klasifikasi</label>
+	<select name="id_kelas"><option value="">[Pilih Klasifikasi]</option>
 	<?php 
 	$q_kelas	= $this->db->query("SELECT * FROM r_kelas ORDER BY id ASC")->result();
 	if (!empty($q_kelas)) {
@@ -90,7 +90,7 @@ if ($mode == "edt" || $mode == "act_edt") {
 	<input class="span2" type="text" name="jml_eksp" placeholder="Eksemplar" value="<?=$jml_eksp?>" required><br>
 	<label style="width: 150px; float: left">Asal Perolehan</label>
 	<input type="radio" name="asal_perolehan" value="0" style="margin: 10px 0 10px" <?php echo !$asal_perolehan ? 'checked' : '' ?> id="hibah"><label for="hibah" style="display: inline">&nbsp;Hibah</label>
-        <input type="radio" name="asal_perolehan" value="1" style="margin: 10px 0 10px" <?php echo $asal_perolehan ? 'checked' : '' ?> id="beli"><label for="beli" style="display: inline">&nbsp;Pembelian</label><br>
+	<input type="radio" name="asal_perolehan" value="1" style="margin: 10px 0 10px" <?php echo $asal_perolehan ? 'checked' : '' ?> id="beli"><label for="beli" style="display: inline">&nbsp;Pembelian</label><br>
 	<label style="width: 150px; float: left">Kota</label><input class="span6" type="text" name="kota" placeholder="Kota" value="<?=$kota?>" required><br>
 	<label style="width: 150px; float: left">Harga</label><input class="span4" type="text" name="harga" placeholder="Harga" value="<?=$harga?>" required><br>
 	<label style="width: 150px; float: left">Lokasi Buku</label>

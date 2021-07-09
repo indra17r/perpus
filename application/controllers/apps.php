@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Apps extends CI_Controller {
+
+	const SITE = 'www.example.com';
+	const PORT = 80;
+
 	function __construct() {
 		parent::__construct();
 	}
@@ -81,7 +85,7 @@ class Apps extends CI_Controller {
 		
 		$cari					= addslashes($this->input->post('q'));
 		//view tampilan website\
-		$a['data']				= $this->db->query("SELECT * FROM t_buku LIMIT $awal, $akhir ")->result();
+		$a['data']				= $this->db->query("SELECT *, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id LIMIT $awal, $akhir ")->result();
 		$a['page']				= "d_buku";
 
 		if ($mau_ke == "del") {
@@ -773,7 +777,7 @@ class Apps extends CI_Controller {
         }
 		$m['jml']		= $this->db->query("SELECT * FROM t_buku")->num_rows();
 		$m['page']		= "l_buku";
-		$m['data']		= $this->db->query("SELECT * FROM t_buku")->result();
+		$m['data']		= $this->db->query("SELECT *, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id")->result();
 		$this->load->view('admin/aaa', $m);
 	}
 	
@@ -832,5 +836,18 @@ class Apps extends CI_Controller {
 	public function logout(){
         $this->session->sess_destroy();
 		redirect('apps/login');
+    }
+
+    function is_connected()
+    {
+        $connected = @fsockopen(self::SITE, self::PORT); 
+
+        if ($connected){
+            $is_conn = true; //action when connected
+            fclose($connected);
+        }else{
+            $is_conn = false; //action in connection failure
+        }
+        return $is_conn;
     }
 }

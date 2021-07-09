@@ -102,9 +102,9 @@
 			</li>
 			<li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle">Referensi &nbsp;&nbsp;<b class="caret"></b></a>		
 				<ul class="dropdown-menu">
-					<li><a href="<?=base_URL()?>apps/r_jenis">Jenis Pustaka</a></li>
-					<li><a href="<?=base_URL()?>apps/r_kelas">Kelas Pustaka</a></li>
-					<li><a href="<?=base_URL()?>apps/r_lokasi">Lokasi Pustaka</a></li>
+					<li><a href="<?=base_URL()?>apps/r_jenis">Jenis</a></li>
+					<li><a href="<?=base_URL()?>apps/r_kelas">Klasifikasi</a></li>
+					<li><a href="<?=base_URL()?>apps/r_lokasi">Lokasi</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle">Konfigurasi &nbsp;&nbsp;<b class="caret"></b></a>		
@@ -135,7 +135,7 @@
 
     <div class="container-fluid" style="margin-top: 90px">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Administrator Menu</li>
@@ -156,7 +156,7 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-		<div class="span9">
+		<div class="span10">
 			<?=$this->load->view("admin/".$page);?>
         </div><!--/span-->
       </div><!--/row-->
