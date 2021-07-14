@@ -85,7 +85,7 @@ class Apps extends CI_Controller {
 		
 		$cari					= addslashes($this->input->post('q'));
 		//view tampilan website\
-		$a['data']				= $this->db->query("SELECT *, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id LIMIT $awal, $akhir ")->result();
+		$a['data']				= $this->db->query("SELECT t_buku.*, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id LIMIT $awal, $akhir ")->result();
 		$a['page']				= "d_buku";
 
 		if ($mau_ke == "del") {
@@ -777,7 +777,7 @@ class Apps extends CI_Controller {
         }
 		$m['jml']		= $this->db->query("SELECT * FROM t_buku")->num_rows();
 		$m['page']		= "l_buku";
-		$m['data']		= $this->db->query("SELECT *, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id")->result();
+		$m['data']		= $this->db->query("SELECT t_buku.*, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id")->result();
 		$this->load->view('admin/aaa', $m);
 	}
 	

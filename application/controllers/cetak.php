@@ -71,7 +71,7 @@ class Cetak extends CI_Controller {
             redirect('apps/login');
         }
 		
-		$m['data']	= $this->db->query("SELECT *, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id")->result();
+		$m['data']	= $this->db->query("SELECT t_buku.*, r_kelas.kode AS kelas_kode FROM t_buku LEFT JOIN r_kelas ON t_buku.id_kelas = r_kelas.id")->result();
 		$this->load->view('cetak/buku', $m);
 	}
 	
