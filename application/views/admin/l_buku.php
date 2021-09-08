@@ -28,7 +28,7 @@
 		<tr>
 			<td style="text-align: center"><?=$no?></td>
 			<td style="text-align: center"><?=$d->induk_1;?>-<?=$d->induk_2;?>/SDM</td>
-			<td style="text-align: center"><?=$d->kelas_kode?>/<?=substr(strtoupper($d->pengarang), 0, 3);?>/M</td>
+			<td style="text-align: center"><?=$d->kelas_kode?>/<?=substr(strtoupper($d->pengarang), 0, 3);?>/<?=substr(strtoupper($d->judul), 0, 1);?></td>
 			<td style="text-align: left"><?=$d->judul?></td>
 			<td style="text-align: left"><?=$d->pengarang?></td>
 			<td style="text-align: center"><?=$d->penerbit?></td>

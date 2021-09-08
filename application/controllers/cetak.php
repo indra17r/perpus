@@ -13,13 +13,13 @@ class Cetak extends CI_Controller {
 		echo "Halaman Cetak";
 	}
 	
-	public function anggota() {
+	public function buku() {
 		if(! $this->session->userdata('validated')){
             redirect('apps/login');
         }
 		
 		//view tampilan website\
-		$a['data']		= $this->db->query("SELECT * FROM t_anggota ORDER BY id ASC")->result();
+		$a['data']		= $this->db->query("SELECT * FROM t_buku ORDER BY id ASC")->result();
 		$this->load->view('cetak/kartu_anggota', $a);
 	}
 	

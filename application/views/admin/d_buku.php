@@ -1,6 +1,7 @@
 <legend>Data Management</legend>
 
 <button class="btn btn-primary" type="button" onclick="window.open('<?php echo base_URL(); ?>apps/buku/add/', '_self')">Data Baru</button>
+<button class="btn btn-primary" type="button" onclick="window.open('<?php echo base_URL(); ?>cetak/buku', '_blank')">Cetak Kartu Buku</button>
 <div class="pull-right">
 <form action="<?=base_URL()?>apps/buku/cari" method="post">
 	<input type="text" name="q" style="width: 200px" placeholder="Masukkan kata kunci" required>
@@ -40,7 +41,7 @@
 		<tr>
 			<td style="text-align: center"><?=$i; ?></td>
 			<td style="text-align: center"><?=$b->induk_1;?>-<?=$b->induk_2;?>/SDM</td>
-			<td style="text-align: center"><?=$b->kelas_kode;?>/<?=substr(strtoupper($b->pengarang), 0, 3);?>/M</td>
+			<td style="text-align: center"><?=$b->kelas_kode;?>/<?=substr(strtoupper($b->pengarang), 0, 3);?>/<?=substr(strtoupper($b->judul), 0, 1);?></td>
 			<td><?=$b->judul?><br><b><?=$b->pengarang?></b><br><i><?=$b->penerbit?></i></td>
 			<td><?=$b->th_terbit?><br><?=$b->jml_hal?> hlmn</td>
 			<td style="text-align: center"><?=$b->jml_judul?>/<?=$b->jml_eksp?></td>

@@ -135,7 +135,7 @@
 
     <div class="container-fluid" style="margin-top: 90px">
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Administrator Menu</li>
@@ -156,7 +156,7 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-		<div class="span10">
+		<div class="span9">
 			<?=$this->load->view("admin/".$page);?>
         </div><!--/span-->
       </div><!--/row-->
